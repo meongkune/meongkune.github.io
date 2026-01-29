@@ -1,3 +1,7 @@
+---
+layout: single
+title: "SQL 함수"
+---
 
 #### 📌 DUAL 테이블 짚고 넘어가기  
 
