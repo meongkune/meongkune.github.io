@@ -118,11 +118,13 @@ $$
 ## 2) 문자 함수
 
 ### INITCAP / LOWER / UPPER
-- `INITCAP(char)` : 첫 글자만 대문자, 나머지는 소문자 (여기서, "첫 글자"는 문자열 맨 앞만 의미하는 것이 아니라, 공백·숫자·특수문자 등 알파벳이 아닌 문자를 기준으로 단어가 구분될 때마다 그 다음 알파벳을 첫 글자로 인식하여 대문자로 변환한다.)  ```sql
-SELECT INITCAP('never say goodbye'), INITCAP('never6say*good가bye') FROM DUAL;
--- Never Say Goodbye , Never6say*Good가bye
+- `INITCAP(char)` : 첫 글자만 대문자, 나머지는 소문자 (여기서, "첫 글자"는 문자열 맨 앞만 의미하는 것이 아니라, 공백·숫자·특수문자 등 알파벳이 아닌 문자를 기준으로 단어가 구분될 때마다 그 다음 알파벳을 첫 글자로 인식하여 대문자로 변환한다.)
+  ```sql
+    SELECT INITCAP('never say goodbye'), INITCAP('never6say*good가bye') FROM DUAL;
+     -- Never Say Goodbye , Never6say*Good가bye
+  ```
 - `LOWER(char)` : 모두 소문자 변환
--  
+   
   ```sql
   SELECT LOWER('NEVER SAY GOODBYE') FROM DUAL; -- never say goodbye
   ```
@@ -135,7 +137,7 @@ SELECT INITCAP('never say goodbye'), INITCAP('never6say*good가bye') FROM DUAL;
 
 ### CONCAT
 - `CONCAT(char1, char2)` : 문자열 연결 (연결 연산자 `||` 동일)
-- 
+  
   ```sql
   SELECT CONCAT('I Have',' A Dream') FROM DUAL; -- I Have A Dream
   ```
@@ -144,13 +146,13 @@ SELECT INITCAP('never say goodbye'), INITCAP('never6say*good가bye') FROM DUAL;
 
 ### SUBSTR / SUBSTRB
 - `SUBSTR(char, pos, len)` : 위치 기준 잘라내기
-- 
+  
   ```sql
   SELECT SUBSTR('ABCDEFG',1,4) FROM DUAL; -- ABCD
   SELECT SUBSTR('ABCDEFG',-3,2) FROM DUAL; -- EF
   ```
 - `SUBSTRB(char, pos, len)` : 바이트 단위 잘라내기
--  
+   
   ```sql
   SELECT SUBSTRB('가나다라마바사',1,4) FROM DUAL; -- 가(한글은 3byte 단위)
   ```
@@ -158,7 +160,7 @@ SELECT INITCAP('never say goodbye'), INITCAP('never6say*good가bye') FROM DUAL;
 ### LTRIM / RTRIM
 - `LTRIM(char, set)` : 왼쪽에서 지정 문자 제거  
 - `RTRIM(char, set)` : 오른쪽에서 지정 문자 제거
--   
+   
   ```sql
   SELECT LTRIM('ABCDEFGABC','ABC'), LTRIM('가나다라','가'),
        RTRIM('ABCDEFGABC','ABC'), RTRIM('가나다라','라') FROM DUAL; -- DEFGABC , 나다라 , ABCDEFG , 가나다
@@ -173,12 +175,12 @@ SELECT INITCAP('never say goodbye'), INITCAP('never6say*good가bye') FROM DUAL;
 - `LPAD(expr1, n, expr2)` : 왼쪽 채우기  
 - `RPAD(expr1, n, expr2)` : 오른쪽 채우기  
  ```sql
-CREATE TABLE EX4_1(PHONE_NUM VARCHAR2(30));
+  CREATE TABLE EX4_1(PHONE_NUM VARCHAR2(30));
   INSERT INTO EX4_1 VALUES('111-1111');
   INSERT INTO EX4_1 VALUES('111-2222');
   INSERT INTO EX4_1 VALUES('111-3333');
-SELECT LPAD(PHONE_NUM,9,'(02)') FROM EX4_1; -- (111-1111 , (111-2222 , (111-3333
-SELECT RPAD(PHONE_NUM,12,'(02)') FROM EX4_1; -- 111-1111(02) , 111-2222(02) , 111-3333(02)
+  SELECT LPAD(PHONE_NUM,9,'(02)') FROM EX4_1; -- (111-1111 , (111-2222 , (111-3333
+  SELECT RPAD(PHONE_NUM,12,'(02)') FROM EX4_1; -- 111-1111(02) , 111-2222(02) , 111-3333(02)
  ```
 
 
